@@ -1,0 +1,223 @@
+<meta charset="utf-8">
+<title>능력단위 위계</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:"맑은 고딕","Malgun Gothic",sans-serif;
+       background:radial-gradient(1200px 600px at 15% 0%,#eef5ff 0%,#f7fafd 45%,#fff 100%)}
+  .wrap{width:1600px;padding:38px 46px 34px;position:relative;overflow:hidden}
+  .wrap::before{content:'';position:absolute;inset:0;
+    background-image:linear-gradient(#e8eff7 1px,transparent 1px),linear-gradient(90deg,#e8eff7 1px,transparent 1px);
+    background-size:46px 46px;opacity:.5;pointer-events:none}
+  h1{position:relative;font-size:32px;color:#0d2c52;letter-spacing:-1px}
+  h1 em{font-style:normal;color:#2563eb}
+  .sub{position:relative;margin-top:6px;font-size:13.5px;color:#64748b}
+  .story{position:relative;display:flex;align-items:center;gap:10px;margin:14px 0 8px;font-size:17px;font-weight:700}
+  .st{padding:7px 20px;border-radius:30px;color:#fff;box-shadow:0 4px 14px rgba(30,70,140,.22)}
+  .arw{font-size:18px;color:#94a8c0}
+  .keys{position:relative;display:flex;gap:16px;align-items:center;margin:12px 0 14px;font-size:12.5px;color:#475569}
+  .keys .k{display:flex;align-items:center;gap:7px;font-weight:700}
+  .sw{width:34px;height:20px;border-radius:7px}
+  .sw.req{background:linear-gradient(135deg,#3b82f6,#1d4ed8)}
+  .sw.opt{background:#fff;box-shadow:inset 0 0 0 2px #93b4e0}
+  .sw.non{background:#e2e8f0}
+
+  .board{position:relative;border-radius:18px;background:#fff;padding:16px 18px 18px;
+      box-shadow:0 14px 36px rgba(20,50,100,.15)}
+  .grid{display:grid;grid-template-columns:122px 96px repeat(4,276px) 96px;gap:9px}
+
+  .hd{border-radius:11px;padding:9px 6px;text-align:center;color:#fff;
+      box-shadow:0 5px 14px rgba(20,50,100,.16)}
+  .hd .s{font-size:16px;font-weight:800;letter-spacing:-.4px}
+  .hd .h{font-size:11.5px;font-weight:700;opacity:.88;margin-top:2px}
+  .hd.on{background:linear-gradient(135deg,#3b82f6,#1d4ed8)}
+  .hd.off{background:#cbd5e1;color:#64748b;box-shadow:none}
+  .hd.off .h{opacity:.9}
+  .corner{display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;
+      font-size:12px;font-weight:800;color:#64748b}
+
+  .lv{border-radius:11px;padding:10px 9px;color:#fff;display:flex;flex-direction:column;justify-content:center;
+      box-shadow:0 5px 14px rgba(20,50,100,.16)}
+  .lv .n{font-size:24px;font-weight:800;letter-spacing:-1px;line-height:1}
+  .lv .n i{font-style:normal;font-size:13px;font-weight:700;opacity:.85}
+  .lv .d{font-size:11px;line-height:1.35;opacity:.9;margin-top:5px;font-weight:700;word-break:keep-all}
+
+  .cell{border-radius:11px;padding:7px;display:flex;flex-direction:column;gap:6px;justify-content:center}
+  .cell.band5{background:rgba(99,102,241,.09)}
+  .cell.band4{background:rgba(59,130,246,.11)}
+  .cell.band3{background:rgba(56,189,248,.09)}
+  .cell.band2{background:rgba(148,163,184,.10)}
+  .cell.dead{background:repeating-linear-gradient(135deg,#f1f5f9 0 8px,#e9eef5 8px 16px)}
+
+  .u{border-radius:9px;padding:7px 10px;position:relative}
+  .u.req{background:linear-gradient(135deg,#3b82f6,#1d4ed8);color:#fff;box-shadow:0 5px 13px rgba(29,78,216,.28)}
+  .u.opt{background:#fff;color:#1e293b;box-shadow:inset 0 0 0 2px #bfd4ee,0 3px 9px rgba(20,50,100,.08)}
+  .u.top{background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;box-shadow:0 6px 16px rgba(217,119,6,.34)}
+  .u .nm{font-size:13.5px;font-weight:800;letter-spacing:-.5px;line-height:1.2;padding-right:22px}
+  .u .mt{font-size:11px;margin-top:3px;opacity:.86;font-weight:700}
+  .u.opt .mt{color:#64748b}
+  .u .star{position:absolute;right:8px;top:6px;font-size:12px;opacity:.9}
+  .u .rate{position:absolute;right:9px;bottom:6px;font-size:11px;font-weight:800;opacity:.9}
+  .u.opt .rate{color:#2563eb}
+  .empty{font-size:11.5px;color:#b0bcca;text-align:center;font-weight:700}
+  .deadtx{font-size:11.5px;color:#94a3b8;text-align:center;font-weight:700;line-height:1.5}
+
+  .rail{position:relative;display:grid;grid-template-columns:122px 96px repeat(4,276px) 96px;gap:9px;margin-top:12px}
+  .rc{border-radius:10px;padding:8px 10px;color:#fff;text-align:center;font-size:12px;font-weight:700}
+  .rc b{display:block;font-size:15px;font-weight:800;letter-spacing:-.4px}
+  .rlab{font-size:11.5px;text-align:right;line-height:1.35;word-break:keep-all;font-weight:800;color:#64748b;display:flex;align-items:center;justify-content:flex-end;padding-right:4px}
+
+  .foot{position:relative;margin-top:14px;display:grid;grid-template-columns:1fr 1fr 546px;gap:14px}
+  .fb{border-radius:15px;background:#fff;padding:16px 20px;box-shadow:0 10px 26px rgba(20,50,100,.12)}
+  .fb h3{font-size:14px;color:#0d2c52;margin-bottom:10px;letter-spacing:-.4px}
+  .fb .r{display:flex;justify-content:space-between;align-items:center;font-size:12.8px;padding:5px 0;
+      border-bottom:1px dashed #eef2f7;color:#334155}
+  .fb .r:last-child{border-bottom:0}
+  .fb .r b{font-weight:800;color:#0d2c52}
+  .fb .ok{font-size:11px;font-weight:800;color:#15803d;background:#dcfce7;border-radius:6px;padding:2px 8px;margin-left:6px}
+  .fb p{font-size:12px;color:#64748b;line-height:1.55;margin-top:9px}
+
+  .rule{border-radius:15px;background:linear-gradient(150deg,#1e3a8a,#312e81);color:#fff;padding:16px 20px;
+      box-shadow:0 12px 30px rgba(20,50,100,.26)}
+  .rule h3{font-size:14px;margin-bottom:10px;letter-spacing:-.4px}
+  .rule .r{display:flex;gap:9px;font-size:12.3px;line-height:1.5;margin-bottom:8px;opacity:.95}
+  .rule .r b{flex:none;width:22px;height:22px;border-radius:7px;background:rgba(255,255,255,.2);
+      font-size:11px;display:flex;align-items:center;justify-content:center;font-weight:800}
+  .rule .r em{font-style:normal;color:#fde68a;font-weight:800}
+</style>
+
+<div class="wrap">
+  <h1>능력단위 <em>위계</em> — NCS 수준 × 학기</h1>
+  <div class="sub">신청서 본문 59쪽 편제표 · 60쪽 &lt;능력단위 배정&gt; &nbsp;|&nbsp; 과정평가형 자동화설비산업기사 [27v5] · 편성 능력단위 16개(필수 9 · 선택 7) · 이수 범위 <b>1학년 2학기 ~ 3학년 1학기</b></div>
+  <div class="story">
+    <span class="st" style="background:linear-gradient(135deg,#94a3b8,#64748b)">2수준 부품</span>
+    <span class="arw">▶</span>
+    <span class="st" style="background:linear-gradient(135deg,#38bdf8,#0284c7)">3수준 장치</span>
+    <span class="arw">▶</span>
+    <span class="st" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8)">4수준 라인</span>
+    <span class="arw">▶</span>
+    <span class="st" style="background:linear-gradient(135deg,#f59e0b,#d97706)">3-2 외부평가 · 산업기사</span>
+  </div>
+  <div class="keys">
+    <div class="k"><span class="sw req"></span>★ 필수능력단위 9개 · 331시간</div>
+    <div class="k"><span class="sw opt"></span>선택능력단위 7개 · 258시간</div>
+    <div class="k"><span class="sw non"></span>자격 편성 0시간 학기</div>
+    <div class="k" style="color:#64748b">숫자는 <b>기준시간 대비 편성 비율</b> (필수 50~150% · 선택 1~150%)</div>
+  </div>
+
+  <div class="board">
+    <div class="grid">
+      <div class="corner">NCS 수준 ▲ / 학기 ▶</div>
+      <div class="hd off"><div class="s">1-1</div><div class="h">0시간</div></div>
+      <div class="hd on"><div class="s">1-2</div><div class="h">자격 편성 125시간</div></div>
+      <div class="hd on"><div class="s">2-1</div><div class="h">자격 편성 144시간</div></div>
+      <div class="hd on"><div class="s">2-2</div><div class="h">자격 편성 176시간</div></div>
+      <div class="hd on"><div class="s">3-1</div><div class="h">자격 편성 208시간</div></div>
+      <div class="hd off"><div class="s">3-2</div><div class="h">0시간</div></div>
+
+      <!-- 4수준 -->
+      <div class="lv" style="background:linear-gradient(150deg,#3b82f6,#1d4ed8)">
+        <div class="n">4<i>수준</i></div>
+        <div class="d">산업기사 수준<br>편성 최고 수준 (3개)</div>
+      </div>
+      <div class="cell dead"><div class="deadtx">—</div></div>
+      <div class="cell band4"><div class="empty">—</div></div>
+      <div class="cell band4">
+        <div class="u opt"><div class="nm">빅데이터 수집시스템 개발</div><div class="mt">빅 데이터 분석 · 48시간</div><div class="rate">120%</div></div>
+      </div>
+      <div class="cell band4">
+        <div class="u opt"><div class="nm">인공지능서비스<br>운영지원도구관리</div><div class="mt">빅 데이터 분석 · 18시간</div><div class="rate">60%</div></div>
+      </div>
+      <div class="cell band4">
+        <div class="u top"><span class="star">★</span><div class="nm">PLC제어 특수 모듈<br>프로그램 개발</div><div class="mt">기계소프트웨어개발 · 80시간</div><div class="rate">133%</div></div>
+      </div>
+      <div class="cell dead"><div class="deadtx">—</div></div>
+
+      <!-- 3수준 -->
+      <div class="lv" style="background:linear-gradient(150deg,#38bdf8,#0284c7)">
+        <div class="n">3<i>수준</i></div>
+        <div class="d">기능사~산업기사 사이<br>편성의 중심 (10개)</div>
+      </div>
+      <div class="cell dead"><div class="deadtx">자격<br>편성<br>범위<br>밖</div></div>
+      <div class="cell band3">
+        <div class="u req"><span class="star">★</span><div class="nm">조립도면작성</div><div class="mt">기계수동조립 · 45시간</div><div class="rate">100%</div></div>
+      </div>
+      <div class="cell band3">
+        <div class="u req"><span class="star">★</span><div class="nm">전기전자장치조립</div><div class="mt">기계수동조립 · 30시간</div><div class="rate">100%</div></div>
+        <div class="u req"><span class="star">★</span><div class="nm">체결요소설계</div><div class="mt">기계요소설계 · 48시간</div><div class="rate">107%</div></div>
+      </div>
+      <div class="cell band3">
+        <div class="u req"><span class="star">★</span><div class="nm">유압제어</div><div class="mt">기계소프트웨어개발 · 24시간</div><div class="rate">53%</div></div>
+        <div class="u req"><span class="star">★</span><div class="nm">센서 활용 기술</div><div class="mt">기계소프트웨어개발 · 24시간</div><div class="rate">53%</div></div>
+        <div class="u req"><span class="star">★</span><div class="nm">모터 제어</div><div class="mt">기계소프트웨어개발 · 24시간</div><div class="rate">53%</div></div>
+        <div class="u opt"><div class="nm">인공지능 학습데이터 라벨링</div><div class="mt">빅 데이터 분석 · 30시간</div><div class="rate">150%</div></div>
+      </div>
+      <div class="cell band3">
+        <div class="u req"><span class="star">★</span><div class="nm">HMI 프로그램 개발</div><div class="mt">기계소프트웨어개발 · 32시간</div><div class="rate">107%</div></div>
+        <div class="u opt"><div class="nm">유공압제어설계</div><div class="mt">기계제어설계 · 48시간</div><div class="rate">120%</div></div>
+        <div class="u opt"><div class="nm">제어로직적용</div><div class="mt">기계제어설계 · 48시간</div><div class="rate">120%</div></div>
+      </div>
+      <div class="cell dead"><div class="deadtx">외부평가<br>·<br>캡스톤 디자인</div></div>
+
+      <!-- 2수준 -->
+      <div class="lv" style="background:linear-gradient(150deg,#94a3b8,#64748b)">
+        <div class="n">2<i>수준</i></div>
+        <div class="d">기능사 기초<br>부품 · 안전</div>
+      </div>
+      <div class="cell dead"><div class="deadtx">—</div></div>
+      <div class="cell band2">
+        <div class="u opt"><div class="nm">3D형상모델링작업</div><div class="mt">기계요소설계 · 48시간</div><div class="rate">96%</div></div>
+      </div>
+      <div class="cell band2">
+        <div class="u opt"><div class="nm">조립안전관리</div><div class="mt">기계수동조립 · 18시간</div><div class="rate">60%</div></div>
+      </div>
+      <div class="cell band2">
+        <div class="u req"><span class="star">★</span><div class="nm">공기압 제어</div><div class="mt">기계소프트웨어개발 · 24시간</div><div class="rate">53%</div></div>
+      </div>
+      <div class="cell band2"><div class="empty">—</div></div>
+      <div class="cell dead"><div class="deadtx">—</div></div>
+    </div>
+
+    <div class="rail">
+      <div class="rlab"><span>학기별 최고 필수 수준 ▶</span></div>
+      <div class="rc" style="background:#cbd5e1;color:#64748b"><b>—</b>기초 이론</div>
+      <div class="rc" style="background:linear-gradient(135deg,#38bdf8,#0ea5e9)"><b>3수준</b>부품 · 도면</div>
+      <div class="rc" style="background:linear-gradient(135deg,#0ea5e9,#2563eb)"><b>3수준</b>부품 조립 · 설계</div>
+      <div class="rc" style="background:linear-gradient(135deg,#2563eb,#1d4ed8)"><b>3수준</b>장치 구동 · 제어</div>
+      <div class="rc" style="background:linear-gradient(135deg,#f59e0b,#d97706)"><b>4수준</b>라인 통합 제어</div>
+      <div class="rc" style="background:#cbd5e1;color:#64748b"><b>—</b>외부평가</div>
+    </div>
+    <div style="margin-top:9px;font-size:11.5px;color:#94a3b8;line-height:1.55">
+      ※ 필수능력단위의 최고 수준은 3-1의 <b style="color:#b45309">PLC제어 특수 모듈 프로그램 개발(4수준)</b>이다. 선택능력단위 중 빅 데이터 분석의 두 개(빅데이터 수집시스템 개발 · 인공지능서비스 운영지원도구관리)는 NCS 대분류 '20. 정보통신'의 <b>4수준</b> 능력단위로, 필수 트랙과 별개의 AI·데이터 특성화 편성이다(2026-09-16 5수준 → 4수준 교체 — 졸업 수준 = 산업기사 4수준).
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="fb">
+      <h3>총 교육·훈련시간 편성 (A)</h3>
+      <div class="r"><span>필수능력단위 <b>B</b> · 9개</span><span><b>331h</b><span class="ok">312~585 충족</span></span></div>
+      <div class="r"><span>선택능력단위 <b>E</b> · 7개</span><span><b>258h</b><span class="ok">개별 1~150%</span></span></div>
+      <div class="r"><span>직업기초능력 <b>C</b></span><span><b>32h</b><span class="ok">18~60 충족</span></span></div>
+      <div class="r"><span>자율편성교과 <b>D</b></span><span><b>32h</b><span class="ok">0~162 충족</span></span></div>
+      <div class="r" style="padding-top:8px;border-top:2px solid #e2e8f0"><span><b>총 교육훈련시간 A</b></span><span><b style="font-size:15px">653h</b><span class="ok">480~900 충족</span></span></div>
+      <p>1학점 = 50분 × 16회, 학교 수업 1차시(50분)를 교육·훈련시간 1시간으로 인정 — 2026-08-22 확인.</p>
+    </div>
+
+    <div class="fb">
+      <h3>왜 1-1과 3-2가 비어 있는가</h3>
+      <div class="r"><span><b>1-1</b> 자격 편성 0시간</span><span>기초 이론 완결</span></div>
+      <p style="margin-top:4px">기계 제도 · 기계 일반 · 전기·전자 일반 · 자동화 설비로 도면과 회로의 기초를 먼저 세운다. 능력단위를 배정하지 않는다.</p>
+      <div class="r" style="margin-top:10px"><span><b>3-2</b> 자격 편성 0시간</span><span>외부평가 · 캡스톤 디자인</span></div>
+      <p style="margin-top:4px">3-1에 교육·훈련을 끝내고, 3-2는 과정평가형 <b>외부평가 응시</b>와 캡스톤 디자인에 집중한다. 기계제어설계 3-2분 6학점(96차시)은 과정평가형 범위 밖의 심화 실습.</p>
+      <p style="margin-top:8px;color:#475569">※ 3학년 AMR 운용 · AI 로봇과 자동제어 · 스마트팩토리 프로세서는 자격 편성에 넣지 않고 학과 특성화 교과로 운영 — A 상한 여유를 확보한다.</p>
+    </div>
+
+    <div class="rule">
+      <h3>이 그림이 지키고 있는 편성 규칙</h3>
+      <div class="r"><b>①</b><span>전공 실무 과목은 <em>최대 2학기</em>까지 편성 — 기계수동조립(1-2·2-1), 기계요소설계(1-2·2-1), 빅 데이터 분석(2-1·2-2), 기계소프트웨어개발(2-2·3-1) 모두 2학기</span></div>
+      <div class="r"><b>②</b><span><em>하나의 능력단위는 학기를 넘겨 편성할 수 없다</em> — 표의 모든 칸이 한 학기 안에서 완결됨. '분석 데이터 전처리'는 구 안에서 2-1·2-2로 32시간씩 쪼개져 있었으나 2-2 단독 18시간으로 재배정함(v12)</span></div>
+      <div class="r"><b>③</b><span>전문공통 · 전공일반 과목은 <em>단일 학기</em> 편성</span></div>
+      <div class="r"><b>④</b><span>근거 : 「2022 개정 교육과정 총론 해설(고등학교)」 <em>109쪽</em>. '연속 학기'는 규정에 없는 자체 관행임</span></div>
+      <div class="r"><b>⑤</b><span>공업계열 학과는 전문교과 이수 학점의 <em>50% 이상을 실험·실습</em>으로 편성 — 서울특별시교육청 고시 제2026-4호 Ⅲ-3-나-3)-가)-(4). 우리 과 <em>84%</em>로 충족</span></div>
+    </div>
+  </div>
+</div>

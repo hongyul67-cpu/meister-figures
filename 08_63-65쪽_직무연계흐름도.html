@@ -1,0 +1,217 @@
+<meta charset="utf-8">
+<title>핵심 직무 교육과정 연계</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:"맑은 고딕","Malgun Gothic",sans-serif;
+       background:radial-gradient(1200px 600px at 15% 0%,#eef5ff 0%,#f7fafd 45%,#fff 100%)}
+  .wrap{width:1600px;padding:38px 46px 32px;position:relative;overflow:hidden}
+  .wrap::before{content:'';position:absolute;inset:0;
+    background-image:linear-gradient(#e8eff7 1px,transparent 1px),linear-gradient(90deg,#e8eff7 1px,transparent 1px);
+    background-size:46px 46px;opacity:.5;pointer-events:none}
+  h1{position:relative;font-size:32px;color:#0d2c52;letter-spacing:-1px}
+  h1 em{font-style:normal;color:#2563eb}
+  .sub{position:relative;margin-top:6px;font-size:13.5px;color:#64748b}
+  .story{position:relative;display:flex;align-items:center;gap:10px;margin:14px 0 18px;font-size:17px;font-weight:700}
+  .st{padding:7px 20px;border-radius:30px;color:#fff;box-shadow:0 4px 14px rgba(30,70,140,.22)}
+  .arw{font-size:18px;color:#94a8c0}
+
+  .cols{position:relative;display:grid;grid-template-columns:196px 40px 292px 40px 320px 40px 240px 40px 296px;
+        align-items:stretch}
+  .head{position:relative;display:grid;grid-template-columns:196px 40px 292px 40px 320px 40px 240px 40px 296px;
+        margin-bottom:9px}
+  .hb{border-radius:11px;padding:9px 8px;text-align:center;color:#fff;box-shadow:0 5px 15px rgba(20,50,100,.18)}
+  .hb .n{font-size:10.5px;font-weight:800;opacity:.82;letter-spacing:1.4px}
+  .hb .t{font-size:15px;font-weight:800;letter-spacing:-.5px;margin-top:1px}
+
+  .gut{display:flex;align-items:center;justify-content:center}
+  .gut .a{width:28px;height:28px;border-radius:50%;background:#fff;box-shadow:0 4px 12px rgba(20,50,100,.18);
+      display:flex;align-items:center;justify-content:center;font-size:13px;color:#2563eb;font-weight:900}
+
+  .pane{border-radius:15px;background:#fff;box-shadow:0 10px 26px rgba(20,50,100,.12);padding:14px 13px;
+      display:flex;flex-direction:column;gap:9px;justify-content:space-evenly}
+  .pane.tall{background:linear-gradient(165deg,#fff,#f4f8fd)}
+  .pane .gl{font-size:10.5px;font-weight:800;color:#64748b;letter-spacing:1px;margin-bottom:-3px}
+  .chip{border-radius:9px;padding:7px 10px;font-size:12.8px;font-weight:700;color:#12306b;background:#eaf2fd;
+      box-shadow:inset 0 0 0 1px #d3e3f8;line-height:1.3}
+  .chip i{font-style:normal;display:block;font-size:10.8px;color:#6b8bb5;font-weight:700;margin-top:2px}
+  .chip.dom{background:#e8f1fb;box-shadow:inset 0 0 0 1px #cfe0f5;color:#123566}
+  .chip.dig{background:#ecebfd;box-shadow:inset 0 0 0 1px #d9d6fb;color:#312e81}
+  .chip.ax{background:#fef3c7;box-shadow:inset 0 0 0 1px #fde28a;color:#7c4a03}
+  .chip .nw{background:#1d4ed8;color:#fff;font-size:9.5px;font-weight:800;border-radius:5px;padding:1px 5px;margin-left:5px;vertical-align:1px}
+  .grpttl{font-size:11.5px;font-weight:800;color:#fff;border-radius:7px;padding:4px 9px;letter-spacing:-.3px}
+  .tagrow{display:flex;flex-wrap:wrap;gap:5px}
+  .tagrow span{font-size:11.8px;font-weight:700;border-radius:7px;padding:5px 8px;line-height:1.2}
+
+  /* 3 트랙 행 */
+  .track{display:contents}
+  .cellwrap{display:grid;grid-template-rows:repeat(3,1fr);gap:11px}
+  .tcard{border-radius:14px;padding:12px 13px;box-shadow:0 9px 24px rgba(20,50,100,.14);display:flex;
+      flex-direction:column;gap:8px;justify-content:center;flex:1}
+  .cap{border-radius:14px;padding:14px 14px;color:#fff;display:flex;flex-direction:column;justify-content:center;
+      gap:6px;flex:1;box-shadow:0 10px 26px rgba(20,50,100,.24)}
+  .cap .no{font-size:11px;font-weight:800;opacity:.85;letter-spacing:1.5px}
+  .cap .t{font-size:16.5px;font-weight:800;letter-spacing:-.7px;line-height:1.25}
+  .cap .d{font-size:11.5px;opacity:.88;line-height:1.45;font-weight:700}
+  .cmp{border-radius:14px;background:#fff;padding:12px 13px;box-shadow:0 9px 24px rgba(20,50,100,.12);
+      display:flex;flex-direction:column;gap:7px;justify-content:center;flex:1}
+  .cmp .cl{font-size:10.5px;font-weight:800;color:#94a3b8;letter-spacing:.8px}
+  .cmp .list{display:flex;flex-wrap:wrap;gap:5px}
+  .cmp .list span{font-size:11.8px;font-weight:700;border-radius:7px;padding:5px 8px;background:#f1f5f9;
+      color:#334155;box-shadow:inset 0 0 0 1px #e2e8f0;line-height:1.2}
+  .cmp .list span b{font-weight:800}
+
+  .sk{border-radius:11px;padding:9px 11px;font-size:12.8px;font-weight:700;line-height:1.35;position:relative}
+  .sk .lab{font-size:10.5px;font-weight:800;opacity:.8;display:block;margin-bottom:2px;letter-spacing:.5px}
+  .sk i{font-style:normal;display:block;font-size:11px;font-weight:600;opacity:.85;margin-top:3px;line-height:1.4}
+  .sk .fix{position:absolute;right:9px;top:8px;background:#1d4ed8;color:#fff;font-size:9.5px;font-weight:800;
+      border-radius:5px;padding:1px 6px}
+
+  .foot{position:relative;margin-top:16px;display:grid;grid-template-columns:1fr 470px;gap:14px}
+  .fb{border-radius:15px;background:#fff;padding:16px 20px;box-shadow:0 10px 26px rgba(20,50,100,.12)}
+  .fb h3{font-size:14px;color:#0d2c52;margin-bottom:9px;letter-spacing:-.4px}
+  .fb .r{display:flex;gap:10px;font-size:12.5px;line-height:1.5;color:#334155;margin-bottom:7px}
+  .fb .r>b{flex:none;width:78px;font-size:11px;font-weight:800;color:#fff;background:#475569;border-radius:6px;
+      padding:3px 0;text-align:center;height:21px}
+  .fb .r>b.w{background:#f59e0b}
+  .src{border-radius:15px;background:linear-gradient(150deg,#1e3a8a,#312e81);color:#fff;padding:16px 20px;
+      box-shadow:0 12px 30px rgba(20,50,100,.26)}
+  .src h3{font-size:14px;margin-bottom:9px;letter-spacing:-.4px}
+  .src p{font-size:12.2px;line-height:1.6;opacity:.93;margin-bottom:6px}
+  .src p b{color:#fde68a}
+</style>
+
+<div class="wrap">
+  <h1>핵심 직무에 따른 <em>교육과정 연계</em> — 5단 흐름도</h1>
+  <div class="sub">신청서 본문 63·65쪽 7.5 &lt;학과별 핵심 직무에 따른 교육과정 연계표&gt; · 143쪽 &lt;AI+X 관련 협약 체결 예정 산업체 목록&gt; &nbsp;|&nbsp; 지능형자동화과</div>
+  <div class="story">
+    <span class="st" style="background:linear-gradient(135deg,#38bdf8,#0284c7)">부품을 안다</span>
+    <span class="arw">▶</span>
+    <span class="st" style="background:linear-gradient(135deg,#3b82f6,#2563eb)">장치를 움직인다</span>
+    <span class="arw">▶</span>
+    <span class="st" style="background:linear-gradient(135deg,#6366f1,#4f46e5)">라인을 통합한다</span>
+    <span class="arw">▶</span>
+    <span class="st" style="background:linear-gradient(135deg,#f59e0b,#d97706)">협약 기업으로 간다</span>
+  </div>
+
+  <div class="head">
+    <div class="hb" style="background:linear-gradient(135deg,#38bdf8,#0284c7)"><div class="n">STEP 1</div><div class="t">기초 역량</div></div><div></div>
+    <div class="hb" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8)"><div class="n">STEP 2</div><div class="t">학과 교과</div></div><div></div>
+    <div class="hb" style="background:linear-gradient(135deg,#6366f1,#4338ca)"><div class="n">STEP 3</div><div class="t">심화 역량</div></div><div></div>
+    <div class="hb" style="background:linear-gradient(135deg,#8b5cf6,#6d28d9)"><div class="n">STEP 4</div><div class="t">핵심 직무</div></div><div></div>
+    <div class="hb" style="background:linear-gradient(135deg,#f59e0b,#d97706)"><div class="n">STEP 5</div><div class="t">협약 기업</div></div>
+  </div>
+
+  <div class="cols">
+    <!-- STEP 1 -->
+    <div class="pane tall">
+      <div class="gl">1학년 · 전공일반 12학점</div>
+      <div class="chip">도면 해독 · 작성<i>기계 제도</i></div>
+      <div class="chip">기계 구조 · 재료<i>기계 일반</i></div>
+      <div class="chip">회로 · 시퀀스 기초<i>전기 · 전자 일반</i></div>
+      <div class="chip">유공압 · 자동화 기구<i>자동화 설비</i></div>
+      <div class="chip dig">AI · 데이터 기초<i>인공지능 일반</i></div>
+      <div class="gl" style="margin-top:4px">공통</div>
+      <div class="chip" style="background:#f1f5f9;box-shadow:inset 0 0 0 1px #e2e8f0;color:#475569">직업기초능력 10개 영역<i>성공적인 직업생활 · 2-2</i></div>
+    </div>
+    <div class="gut"><div class="a">▶</div></div>
+
+    <!-- STEP 2 -->
+    <div class="pane tall">
+      <div class="grpttl" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8)">도메인 지식</div>
+      <div class="tagrow">
+        <span class="chip dom">기계 일반</span><span class="chip dom">자동화 설비</span><span class="chip dom">기계 제도</span>
+        <span class="chip dom">기계요소설계</span><span class="chip dom">기계수동조립</span>
+        <span class="chip dom">기계소프트웨어개발</span><span class="chip dom">기계제어설계</span>
+      </div>
+      <div class="grpttl" style="background:linear-gradient(135deg,#6366f1,#4338ca);margin-top:4px">디지털 역량 (AI · 데이터 리터러시)</div>
+      <div class="tagrow">
+        <span class="chip dig">인공지능 일반</span><span class="chip dig">빅 데이터 분석</span>
+        <span class="chip dig">전기 · 전자 일반</span><span class="chip dig">스마트 공장 일반</span>
+      </div>
+      <div class="grpttl" style="background:linear-gradient(135deg,#f59e0b,#d97706);margin-top:4px">AX 역량</div>
+      <div class="tagrow">
+        <span class="chip ax">로봇과 공학세계</span>
+        <span class="chip ax">AMR 운용</span><span class="chip ax">AI 로봇과 자동제어</span>
+        <span class="chip ax">스마트팩토리 프로세서</span>
+        <span class="chip ax">캡스톤 디자인<span class="nw">신설 6학점</span></span>
+      </div>
+    </div>
+    <div class="gut"><div class="a">▶</div></div>
+
+    <!-- STEP 3 -->
+    <div class="cellwrap">
+      <div class="tcard" style="background:#e8f6fe;box-shadow:inset 0 0 0 2px #b6e2f8,0 9px 24px rgba(20,50,100,.10)">
+        <div class="sk" style="background:#fff;color:#0b4a6e"><span class="lab">역량 ①</span>지능형 PLC 제어 및 센서 활용 능력<i>기계소프트웨어개발 — 센서 활용 기술 · 모터 제어 · PLC제어 특수 모듈 · HMI 프로그램 개발</i></div>
+        <div class="sk" style="background:#fff;color:#0b4a6e"><span class="lab">역량 ②</span>지능형 자동화 시스템 설계 능력<i>기계제어설계 — 유공압제어설계 · 제어로직적용</i></div>
+      </div>
+      <div class="tcard" style="background:#ecebfd;box-shadow:inset 0 0 0 2px #cdc9fb,0 9px 24px rgba(20,50,100,.10)">
+        <div class="sk" style="background:#fff;color:#312e81"><span class="fix">문장 교체</span><span class="lab">역량 ③</span>로봇 운용 프로그래밍 및 제어 통신 구축<i>PLC · 컨트롤러와 로봇 간 인터페이스를 구성하고, 운반로봇의 동작을 프로그래밍하여 생산 라인과 연동하는 능력</i></div>
+        <div class="sk" style="background:#fff;color:#312e81"><span class="lab">역량 ④</span>자율주행 로봇 경로계획 이해 및 센서 활용<i>AMR 운용 — 로봇 이동지능 개발 · 환경 인지지능 개발</i></div>
+      </div>
+      <div class="tcard" style="background:#fef4de;box-shadow:inset 0 0 0 2px #fbdfa0,0 9px 24px rgba(20,50,100,.10)">
+        <div class="sk" style="background:#fff;color:#7c4a03"><span class="lab">역량 ⑤</span>시스템 통합 및 문제 해결 역량<i>스마트팩토리 프로세서 · 캡스톤 디자인</i></div>
+        <div class="sk" style="background:#fff;color:#7c4a03"><span class="lab">역량 ⑥</span>융합 데이터 분석 및 모니터링<i>빅 데이터 분석 · 스마트 공장 일반</i></div>
+      </div>
+    </div>
+    <div class="gut"><div class="a">▶</div></div>
+
+    <!-- STEP 4 -->
+    <div class="cellwrap">
+      <div class="cap" style="background:linear-gradient(155deg,#38bdf8,#0284c7)">
+        <div class="no">핵심 직무 ①</div>
+        <div class="t">AI 지능형<br>자동화 시스템<br>설계 및 제어</div>
+        <div class="d">공유압 · 모터 · PLC · HMI로 설비를 제어하고 라인을 설계한다</div>
+      </div>
+      <div class="cap" style="background:linear-gradient(155deg,#6366f1,#4338ca)">
+        <div class="no">핵심 직무 ②</div>
+        <div class="t">자율주행<br>운반로봇<br>시스템 운용</div>
+        <div class="d">AMR을 생산 라인과 연동하고 관제한다</div>
+      </div>
+      <div class="cap" style="background:linear-gradient(155deg,#f59e0b,#d97706)">
+        <div class="no">핵심 직무 ③</div>
+        <div class="t">스마트팩토리<br>시스템 통합<br>관리자</div>
+        <div class="d">설비 · 로봇 · 데이터를 하나의 공정으로 통합한다</div>
+      </div>
+    </div>
+    <div class="gut"><div class="a">▶</div></div>
+
+    <!-- STEP 5 -->
+    <div class="cellwrap">
+      <div class="cmp">
+        <div class="cl">자동화 · 공정제어 / 산업용 PC · 센서 &nbsp;4개사</div>
+        <div class="list">
+          <span>나이스테크㈜</span><span>이앤비솔루션㈜</span><span>아이피씨엔비㈜</span><span>에이딘 로보틱스㈜</span>
+        </div>
+      </div>
+      <div class="cmp">
+        <div class="cl">로봇 자동화 · AMR &nbsp;3개사</div>
+        <div class="list">
+          <span>로보게이트㈜</span><span>클로봇㈜</span><span>씨메스㈜</span>
+        </div>
+      </div>
+      <div class="cmp">
+        <div class="cl">MES · 설비운용 / 스마트팩토리 / 비전 검사 &nbsp;8개사</div>
+        <div class="list">
+          <span>런시스㈜</span><span>스마트코어㈜</span><span>코어엠㈜</span><span>미래아이앤티㈜</span>
+          <span>스마트에스아이㈜</span><span>엠씨링크㈜</span><span>비전에셀㈜</span><span>트윔㈜</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="fb">
+      <h3>이 그림이 담고 있는 변경 사항</h3>
+      <div class="r"><b class="w">교과 추가</b><span>[AX 역량] 그룹에 <b>캡스톤 디자인</b>(6학점 · 3-2)을 추가 — 새 편제표의 신설 과목이며, 핵심 직무 3개를 하나로 묶는 최종 증명물. <b style="color:#b45309">(확인 필요)</b> 7.5 표 검토 시점(2026-08-20)에는 &lsquo;자동화 미니 프로젝트&rsquo;(2학점 · 2-2)도 함께 추가하기로 했으나, 최종 편제표[v11]에는 해당 과목이 없어 이 그림에서는 제외함</span></div>
+      <div class="r"><b class="w">역량 ③</b><span>기존 [로봇 프로그래밍 및 임베디드 제어] — 'C언어·파이썬으로 제어 보드를 프로그래밍' 서술에 대응하는 교과가 편제표에 없어(빅 데이터 분석의 파이썬은 데이터 분석용) '어느 과목에서 배우는가'에 답할 수 없었음. <b>[로봇 운용 프로그래밍 및 제어 통신 구축]</b>으로 교체해 AMR 운용 · AI 로봇과 자동제어와 연결</span></div>
+      <div class="r"><b>표기 통일</b><span>'빅데이터분석' → AI융합기계과 · 전기시스템과 편제표 표기인 <b>빅 데이터 분석</b>으로 통일</span></div>
+      <div class="r"><b>미포함</b><span>'성공적인 직업생활'(2학점)은 직업기초능력(C) 영역이라 도메인 · 디지털 · AX 세 그룹 어디에도 해당하지 않아 7.5 표에서는 제외 — 이 그림에서는 STEP 1 하단에 별도 표기</span></div>
+    </div>
+    <div class="src">
+      <h3>근거와 참고 사례</h3>
+      <p><b>STEP 1~2</b> 새 편제표(본문 59쪽)의 전공일반 · 전공실무 과목 &nbsp;/&nbsp; <b>STEP 3~4</b> 본문 65쪽 7.5 연계표의 핵심 직무 3개 · 핵심 역량 6개 &nbsp;/&nbsp; <b>STEP 5</b> 본문 143쪽 AI+X 협약 예정 산업체 15개사(전 업체 배치, 중복 없음)</p>
+      <p>합격본 4개교(서울반도체고 · 부산반도체마이스터고 · 국제배터리마이스터고 · 경주공업고)는 <b>모두 이 자리에 그림</b>을 배치함. 서울반도체고 49쪽이 같은 형태의 5단 흐름도이고, 부산반도체고 41쪽은 교과목 ↔ 기업분야 ↔ NCS 세분류 연결선도임.</p>
+      <p style="opacity:.8;font-size:11.5px">※ 현행 우리 문서는 이 자리에 텍스트 표만 있음 — 우선순위 '높음' 항목.</p>
+    </div>
+  </div>
+</div>

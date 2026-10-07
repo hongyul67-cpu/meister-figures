@@ -1,0 +1,219 @@
+<meta charset="utf-8">
+<title>자격 로드맵</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:"맑은 고딕","Malgun Gothic",sans-serif;
+       background:radial-gradient(1200px 600px at 15% 0%,#eef5ff 0%,#f7fafd 45%,#fff 100%)}
+  .wrap{width:1600px;padding:38px 46px 30px;position:relative;overflow:hidden}
+  .wrap::before{content:'';position:absolute;inset:0;
+    background-image:linear-gradient(#e8eff7 1px,transparent 1px),linear-gradient(90deg,#e8eff7 1px,transparent 1px);
+    background-size:46px 46px;opacity:.5;pointer-events:none}
+  h1{position:relative;font-size:32px;color:#0d2c52;letter-spacing:-1px}
+  h1 em{font-style:normal;color:#2563eb}
+  .story{position:relative;display:flex;align-items:center;gap:10px;margin:13px 0 24px;font-size:16px;font-weight:700}
+  .st{padding:7px 18px;border-radius:30px;color:#fff;box-shadow:0 4px 14px rgba(30,70,140,.22)}
+  .arw{font-size:17px;color:#94a8c0}
+
+  .board{position:relative;border-radius:18px;background:#fff;padding:0 0 14px;
+      box-shadow:0 12px 34px rgba(20,50,100,.14);overflow:hidden}
+  .hdr{display:grid;grid-template-columns:250px repeat(6,1fr);background:linear-gradient(90deg,#1e3a8a,#3730a3)}
+  .hdr div{padding:13px 10px;color:#fff;font-size:14px;font-weight:800;text-align:center;letter-spacing:-.3px}
+  .hdr div:first-child{text-align:left;padding-left:20px;font-size:13px;opacity:.9}
+  .hdr .ex{background:linear-gradient(135deg,#f59e0b,#d97706)}
+
+  .row{display:grid;grid-template-columns:250px repeat(6,1fr);align-items:center;
+       border-bottom:1px solid #eef2f7;min-height:46px}
+  .row:hover{background:#fafcff}
+  .nm{padding:8px 12px 8px 20px;display:flex;align-items:center;gap:9px}
+  .lvb{width:26px;height:26px;border-radius:8px;color:#fff;font-size:12px;font-weight:800;flex:none;
+       display:flex;align-items:center;justify-content:center}
+  .nmt{font-size:13.5px;font-weight:700;color:#1e293b;letter-spacing:-.4px;line-height:1.25}
+  .nmt i{font-style:normal;display:block;font-size:11px;color:#94a3b8;font-weight:600}
+  .cell{position:relative;height:46px}
+  .bar{position:absolute;top:11px;left:5px;right:5px;height:24px;border-radius:7px;
+       color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;
+       box-shadow:0 3px 8px rgba(20,50,100,.2)}
+  .zone{position:absolute;top:0;bottom:0;background:rgba(37,99,235,.045);pointer-events:none}
+
+  .grp{display:grid;grid-template-columns:250px repeat(6,1fr);background:#f1f5fb}
+  .grp div:first-child{padding:7px 20px;font-size:11.5px;font-weight:800;color:#475569;letter-spacing:1px}
+
+  .foot{display:flex;gap:12px;margin-top:18px}
+  .fc{flex:1;border-radius:14px;padding:15px 18px;color:#fff;display:flex;align-items:center;gap:13px;
+      box-shadow:0 6px 18px rgba(20,50,100,.16)}
+  .fc .t{font-size:11.5px;opacity:.85;font-weight:700}
+  .fc .v{font-size:17px;font-weight:800;letter-spacing:-.5px;margin-top:2px}
+  .lg{display:flex;gap:16px;align-items:center;margin-top:14px;font-size:12.5px;color:#5b6b7d;font-weight:600}
+  .lg b{display:inline-flex;align-items:center;gap:6px}
+  .dot{width:14px;height:14px;border-radius:5px;display:inline-block}
+  .sub{position:relative;margin-top:6px;font-size:13.5px;color:#64748b}
+  .kind{width:26px;height:26px;border-radius:8px;flex:none;display:flex;align-items:center;justify-content:center;
+        font-size:11px;font-weight:800;color:#fff}
+  .sumrow{display:grid;grid-template-columns:250px repeat(6,1fr);background:linear-gradient(90deg,#eef4fd,#e8effb);
+          border-top:2px solid #d7e3f5}
+  .sumrow div{padding:10px 8px;text-align:center;font-size:13.5px;font-weight:800;color:#1e3a8a}
+  .sumrow div:first-child{text-align:left;padding-left:20px;font-size:12px;color:#475569;letter-spacing:-.3px}
+  .sumrow div.off{color:#a3b1c4}
+  .note{position:relative;margin-top:12px;font-size:12px;color:#64748b;line-height:1.6}
+</style>
+
+<div class="wrap">
+  <h1>자동화설비산업기사 <em>이수 로드맵</em> &mdash; 능력단위 16개의 학기 배치</h1>
+  <div class="sub">신청서 본문 59쪽 편제표 &middot; 60쪽 &lt;능력단위 배정&gt; &middot; 편성기준 [27v5] &nbsp;|&nbsp; 이수 범위 <b>1학년 2학기 ~ 3학년 1학기</b> &mdash; 1-1과 3-2에는 능력단위를 배정하지 않는다</div>
+  <div class="story">
+    <span class="st" style="background:linear-gradient(135deg,#0ea5e9,#0284c7)">2수준 부품</span>
+    <span class="arw">&#9654;</span>
+    <span class="st" style="background:linear-gradient(135deg,#3b82f6,#2563eb)">3수준 장치</span>
+    <span class="arw">&#9654;</span>
+    <span class="st" style="background:linear-gradient(135deg,#6366f1,#4f46e5)">4수준 라인</span>
+    <span class="arw">&#9654;</span>
+    <span class="st" style="background:linear-gradient(135deg,#f59e0b,#d97706)">3-2 외부평가</span>
+  </div>
+
+  <div class="board">
+    <div class="hdr">
+      <div>능력단위 &middot; 소속 과목 &middot; 편성시간</div>
+      <div>1-1</div><div>1-2</div><div>2-1</div><div>2-2</div><div>3-1</div><div class="ex">3-2</div>
+    </div>
+
+    <div class="grp"><div>기 초 · 도 면 · 조 립</div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+
+    <div class="row">
+      <div class="nm"><span class="lvb" style="background:#2563eb">3</span>
+        <span class="nmt">조립도면작성<i>기계수동조립 · 필수</i></span></div>
+      <div class="cell"></div><div class="cell"><div class="bar" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8)">&#9733; 45h</div></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+    </div>
+    <div class="row">
+      <div class="nm"><span class="lvb" style="background:#fff;color:#0ea5e9;box-shadow:inset 0 0 0 2px #0ea5e9">2</span>
+        <span class="nmt">3D형상모델링작업<i>기계요소설계 · 선택</i></span></div>
+      <div class="cell"></div><div class="cell"><div class="bar" style="background:linear-gradient(135deg,#38bdf8,#0284c7);border:2px dashed rgba(255,255,255,.8)">48h</div></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+    </div>
+    <div class="row">
+      <div class="nm"><span class="lvb" style="background:#2563eb">3</span>
+        <span class="nmt">전기전자장치조립<i>기계수동조립 · 필수</i></span></div>
+      <div class="cell"></div><div class="cell"></div><div class="cell"><div class="bar" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8)">&#9733; 30h</div></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+    </div>
+    <div class="row">
+      <div class="nm"><span class="lvb" style="background:#2563eb">3</span>
+        <span class="nmt">체결요소설계<i>기계요소설계 · 필수</i></span></div>
+      <div class="cell"></div><div class="cell"></div><div class="cell"><div class="bar" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8)">&#9733; 48h</div></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+    </div>
+    <div class="row">
+      <div class="nm"><span class="lvb" style="background:#fff;color:#0ea5e9;box-shadow:inset 0 0 0 2px #0ea5e9">2</span>
+        <span class="nmt">조립안전관리<i>기계수동조립 · 선택</i></span></div>
+      <div class="cell"></div><div class="cell"></div><div class="cell"><div class="bar" style="background:linear-gradient(135deg,#38bdf8,#0284c7);border:2px dashed rgba(255,255,255,.8)">18h</div></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+    </div>
+    <div class="grp"><div>데 이 터 · A I</div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+
+    <div class="row">
+      <div class="nm"><span class="lvb" style="background:#fff;color:#4f46e5;box-shadow:inset 0 0 0 2px #4f46e5">4</span>
+        <span class="nmt">빅데이터 수집시스템 개발<i>빅 데이터 분석 · 선택</i></span></div>
+      <div class="cell"></div><div class="cell"></div><div class="cell"><div class="bar" style="background:linear-gradient(135deg,#6366f1,#4338ca);border:2px dashed rgba(255,255,255,.8)">48h</div></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+    </div>
+    <div class="row">
+      <div class="nm"><span class="lvb" style="background:#fff;color:#4f46e5;box-shadow:inset 0 0 0 2px #4f46e5">4</span>
+        <span class="nmt">인공지능서비스 운영지원도구관리<i>빅 데이터 분석 · 선택</i></span></div>
+      <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"><div class="bar" style="background:linear-gradient(135deg,#6366f1,#4338ca);border:2px dashed rgba(255,255,255,.8)">18h</div></div><div class="cell"></div><div class="cell"></div>
+    </div>
+    <div class="row">
+      <div class="nm"><span class="lvb" style="background:#fff;color:#2563eb;box-shadow:inset 0 0 0 2px #2563eb">3</span>
+        <span class="nmt">인공지능 학습데이터 라벨링<i>빅 데이터 분석 · 선택</i></span></div>
+      <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"><div class="bar" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8);border:2px dashed rgba(255,255,255,.8)">30h</div></div><div class="cell"></div><div class="cell"></div>
+    </div>
+    <div class="grp"><div>구 동 · 제 어</div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+
+    <div class="row">
+      <div class="nm"><span class="lvb" style="background:#0ea5e9">2</span>
+        <span class="nmt">공기압 제어<i>기계소프트웨어개발 · 필수</i></span></div>
+      <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"><div class="bar" style="background:linear-gradient(135deg,#38bdf8,#0284c7)">&#9733; 24h</div></div><div class="cell"></div><div class="cell"></div>
+    </div>
+    <div class="row">
+      <div class="nm"><span class="lvb" style="background:#2563eb">3</span>
+        <span class="nmt">유압제어<i>기계소프트웨어개발 · 필수</i></span></div>
+      <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"><div class="bar" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8)">&#9733; 24h</div></div><div class="cell"></div><div class="cell"></div>
+    </div>
+    <div class="row">
+      <div class="nm"><span class="lvb" style="background:#2563eb">3</span>
+        <span class="nmt">센서 활용 기술<i>기계소프트웨어개발 · 필수</i></span></div>
+      <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"><div class="bar" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8)">&#9733; 24h</div></div><div class="cell"></div><div class="cell"></div>
+    </div>
+    <div class="row">
+      <div class="nm"><span class="lvb" style="background:#2563eb">3</span>
+        <span class="nmt">모터 제어<i>기계소프트웨어개발 · 필수</i></span></div>
+      <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"><div class="bar" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8)">&#9733; 24h</div></div><div class="cell"></div><div class="cell"></div>
+    </div>
+    <div class="grp"><div>프 로 그 래 밍 · 통 합</div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+
+    <div class="row">
+      <div class="nm"><span class="lvb" style="background:#4f46e5">4</span>
+        <span class="nmt">PLC제어 특수 모듈 프로그램 개발<i>기계소프트웨어개발 · 필수</i></span></div>
+      <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"><div class="bar" style="background:linear-gradient(135deg,#6366f1,#4338ca)">&#9733; 80h</div></div><div class="cell"></div>
+    </div>
+    <div class="row">
+      <div class="nm"><span class="lvb" style="background:#2563eb">3</span>
+        <span class="nmt">HMI 프로그램 개발<i>기계소프트웨어개발 · 필수</i></span></div>
+      <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"><div class="bar" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8)">&#9733; 32h</div></div><div class="cell"></div>
+    </div>
+    <div class="row">
+      <div class="nm"><span class="lvb" style="background:#fff;color:#2563eb;box-shadow:inset 0 0 0 2px #2563eb">3</span>
+        <span class="nmt">유공압제어설계<i>기계제어설계 · 선택</i></span></div>
+      <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"><div class="bar" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8);border:2px dashed rgba(255,255,255,.8)">48h</div></div><div class="cell"></div>
+    </div>
+    <div class="row">
+      <div class="nm"><span class="lvb" style="background:#fff;color:#2563eb;box-shadow:inset 0 0 0 2px #2563eb">3</span>
+        <span class="nmt">제어로직적용<i>기계제어설계 · 선택</i></span></div>
+      <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"><div class="bar" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8);border:2px dashed rgba(255,255,255,.8)">48h</div></div><div class="cell"></div>
+    </div>
+    <div class="grp"><div>직 업 기 초 · 자 율 편 성</div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+
+    <div class="row">
+      <div class="nm"><span class="kind" style="background:#f59e0b">D</span>
+        <span class="nmt">자율편성교과<i>로봇과 공학세계</i></span></div>
+      <div class="cell"></div><div class="cell"><div class="bar" style="background:#f59e0b">32h</div></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+    </div>
+    <div class="row">
+      <div class="nm"><span class="kind" style="background:#64748b">C</span>
+        <span class="nmt">직업기초능력 10개 영역<i>성공적인 직업생활</i></span></div>
+      <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"><div class="bar" style="background:#64748b">32h</div></div><div class="cell"></div><div class="cell"></div>
+    </div>
+    <div class="row" style="border:none;background:linear-gradient(90deg,#fffbeb,#fef3c7)">
+      <div class="nm"><span class="lvb" style="background:#d97706">&#9733;</span>
+        <span class="nmt">외부평가 응시<i>교육&middot;훈련과정은 3-1에 종료</i></span></div>
+      <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"><div class="bar" style="background:linear-gradient(135deg,#f59e0b,#d97706)">산업기사 취득</div></div>
+    </div>
+    <div class="sumrow"><div>학기별 자격 편성시간 계</div><div class="off">0</div><div>125h</div><div>144h</div><div>176h</div><div>208h</div><div class="off">0</div></div>
+  </div>
+
+  <div class="lg">
+    <b><span class="dot" style="background:#0ea5e9"></span>2수준</b>
+    <b><span class="dot" style="background:#2563eb"></span>3수준</b>
+    <b><span class="dot" style="background:#4f46e5"></span>4수준</b>
+    <b><span class="dot" style="background:#3b82f6"></span>&#9733; 필수능력단위 9개</b>
+    <b><span class="dot" style="background:#3b82f6;border:2px dashed #fff;box-shadow:0 0 0 1px #93c5fd"></span>선택능력단위 7개</b>
+    <b><span class="dot" style="background:#f59e0b"></span>D 자율편성</b>
+    <b><span class="dot" style="background:#64748b"></span>C 직업기초</b>
+    <span style="margin-left:auto;color:#94a3b8">1학점 = 50분 &times; 16회 &middot; 1차시(50분) = 교육&middot;훈련시간 1시간</span>
+  </div>
+
+  <div class="foot">
+    <div class="fc" style="background:linear-gradient(135deg,#0ea5e9,#0284c7)">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 2 2 7l10 5 10-5z"/><path d="M2 17l10 5 10-5"/></svg>
+      <div><div class="t">B 필수능력단위 &middot; 9개</div><div class="v">331시간 <span style="font-size:12px;opacity:.85">(범위 312~585)</span></div></div>
+    </div>
+    <div class="fc" style="background:linear-gradient(135deg,#2563eb,#1d4ed8)">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>
+      <div><div class="t">E 선택능력단위 &middot; 7개</div><div class="v">258시간 <span style="font-size:12px;opacity:.85">(개별 1~150%)</span></div></div>
+    </div>
+    <div class="fc" style="background:linear-gradient(135deg,#4f46e5,#4338ca)">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+      <div><div class="t">C 직업기초 + D 자율편성</div><div class="v">64시간 <span style="font-size:12px;opacity:.85">(상한 180)</span></div></div>
+    </div>
+    <div class="fc" style="background:linear-gradient(135deg,#f59e0b,#d97706)">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+      <div><div class="t">A 총 교육훈련시간</div><div class="v">653시간 <span style="font-size:12px;opacity:.85">(범위 480~900)</span></div></div>
+    </div>
+  </div>
+
+  <div class="note">&#8251; 하나의 능력단위는 학기를 넘겨 편성할 수 없다(&#12300;2022 개정 교육과정 총론 해설(고등학교)&#12301; 109쪽) &mdash; 위 표의 모든 막대가 한 학기 안에서 끝난다.<br>
+  &#8251; 3학년 AMR 운용 &middot; AI 로봇과 자동제어 &middot; 스마트팩토리 프로세서와 기계제어설계 3-2분 6학점은 과정평가형 편성에 넣지 않고, 학과 특성화 교과 &middot; 외부평가 대비 심화 실습으로 운영한다.</div>
+</div>
