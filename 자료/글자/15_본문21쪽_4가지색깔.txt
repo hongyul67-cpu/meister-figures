@@ -1,0 +1,24 @@
+﻿[그림] 15_본문21쪽_4가지색깔.png
+[원본] 15_본문21쪽_4가지색깔.html (이 파일의 글자를 고친 뒤 다시그리기.py)
+────────────────────────────────────────
+4가지 색깔, 하나의 목표: AX Expert
+⚙️🦾
+피지컬AI설계제작과
+(Physical AI Design & Manufacturing)
+정밀 가공 & 데이터 분석
+스마트 제조 장비 셋업 & 품질 관리자
+🔧📈
+피지컬AI설비보전과
+(Physical AI Facility Maintenance)
+유틸리티 & 예지보전
+산업의 심장을 진단하는 닥터 머신(Dr. Machine)
+🏭📡
+피지컬AI로봇운용과
+(Physical AI Robot Operation)
+시스템 통합(SI) & 연결
+스마트 팩토리의 지휘자
+⚡🔋
+피지컬AI시스템제어과
+(Physical AI System Control)
+에너지 관리 & 디지털 시공
+지능형 전력망(Smart Grid) 전문가
